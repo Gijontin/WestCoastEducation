@@ -2,5 +2,6 @@
 
 public class Instructor : Account {
     //LIST OF ASSIGNED-TO/LED COURSES
-    public List<LearningItem> MyAssignedCourses { get; set; } = [];
+    public List<LearningExperience> LearningItemAssignmentsList { get; set; } = [];
+    public DateTime EmploymentStartDate { get; set; }
 }

@@ -1,6 +1,6 @@
 ﻿namespace WestCoastEducation;
 
-public class Course : LearningItem {
+public class Course : LearningExperience {
     public override string ToString() {
         return "Skibidi"; //skriv om denna till att returnera ALL relevant info för en kurs man är nyfiken på ...i ett format för en CLI miljö då
 
