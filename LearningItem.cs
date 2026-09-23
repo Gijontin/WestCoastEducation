@@ -30,7 +30,19 @@ public abstract class LearningItem { //tänkte först bara "Education" men bollp
     public string Lesson { get; set; } //minsta byggstenen, i princip, eller ja en lektion kan bestå av små övningar också men...
     
     //ATTRIBUTER FÖR FORMATEN
+    
+    //kandidat till composition -------
+    public string ID { get; set; }
+    public string TitleName { get; set; }
+    public DeliveryType DeliveryType { get; set; } //distans, klassrum, hybrid, etc...
+    //---------------------------------
+
+    public FieldOfStudy FieldOfStudy { get; set; }
+    public Subject Subject { get; set; }
+    public Instructor AssignedInstructor { get; set; }
+    public List<Student> StudentList { get; set; }
     public bool IsStandalone { get; set; } //Workshop är primärexemplet, men även seminar, webinar, course och lesson kan vara det | !!! INTE !!! module eller program
+    public string Description { get; set; }
     /*
     - Kurs-ID //bör följa ett mönster precis som "SYSÄ26M"...
     - Program/Kurs namn/titel
@@ -41,6 +53,7 @@ public abstract class LearningItem { //tänkte först bara "Education" men bollp
         - längd i veckor
     - kommunikation (period-/klass-bunden chat mellan elever OCH lärare)
     - område (för tags, ex: IT, BYGG, HISTORIA, DESIGN, MATEMATIK etc etc...)
+        FAST OM JAG FAKTISKT LÄSER UPPGIFTEN SÅ STÅR DET KLART OCH TYDLIGT ATT WC Education SPECIALISERAT SIG PÅ TEKNISKA UTBILDNINGAR FRÄMST INOM SYS.DEV FÖR WEB OCH MOBILwmalronwlrai...
     - klassrum/distans
     - video
     */
