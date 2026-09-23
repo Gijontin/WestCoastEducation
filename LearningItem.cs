@@ -5,13 +5,29 @@
 */
 public class LearningItem { //tänkte först bara "Education" men bollplankade lite med LLM och kom fram till att detta var ett ännu mer neutralare och abstraktare begrepp
 
-//Försöker gå från bredast scope kronologiskt nedstigande till det minsta Module > Program > <Olika former av kurser> etc...
+//UTBILDNINGSFORMAT
+    //Försöker gå från bredast scope kronologiskt nedstigande till det minsta Module > Program > <Olika former av kurser> etc...
     public string Module { get; set; } //jävligt abstrakt, kan vara både en del av ett program/kurser eller ett-program/en-kurs kanske bestå av moduler...
     public string Program { get; set; }
     public string Workshop { get; set; } //mer praktisk (än seminar) kort kurs och ofta på-plats, mest riktad till företag och sådant, tex Team Building grejs...
     public string Seminar { get; set; } //föreläsning på plats
     public string Webinar { get; set; } //föreläsning online
     public string Course { get; set; }
+    //lesson är bra material för visnings ex/demo för kunder, man kan ta lite små snippets från diverse lektioner av en hel kurs och/eller program...
     public string Lesson { get; set; } //minsta byggstenen, i princip, eller ja en lektion kan bestå av små övningar också men...
+    
+    //ATTRIBUTER FÖR FORMATEN
     public bool IsStandalone { get; set; } //Workshop är primärexemplet, men även seminar, webinar, course och lesson kan vara det | !!! INTE !!! module eller program
+    /*
+    - Program-/Kursnamn
+    - assigned lärare
+    - enlisted student
+    - innehåll/description
+    - period/tidslängd(start/slut)
+        - längd i veckor
+    - kommunikation (period-/klass-bunden chat mellan elever OCH lärare)
+    - område (för tags, ex: IT, BYGG, HISTORIA, DESIGN, MATEMATIK etc etc...)
+    - klassrum/distans
+    - video
+    */
 }
