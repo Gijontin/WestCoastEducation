@@ -2,14 +2,19 @@
 
 public abstract class Account {
     public required Address Address { get; set; }
-    public DateTime TimeOfCreationDate { get; set; }
+    public required DateTime TimeOfCreationDate { get; set; }
 
     /*
     - ADMIN - (mest för att sköta det tekniska "under the hood" på plattformen)
         - adress? (kanske inte faktiskt)
-        - Godmode access
+        - Godmode access (toolkits för att skapa diverse)
+        - Hur separerar jag kontotypen säkert ifrån resterande, bara enums?...?
 
-    - UTBILDNINGSLEDARE - (frågade LLM cuz I don't fucking know the details, paranteserna är mina komentarer...):
+    - UTBILDNINGSLEDARE -
+        - adress
+        - Godmode access (toolkits för att skapa diverse, även mycket statistical overview på allt)
+    
+    (frågade LLM vad en utbildningsledare gör I don't fucking know the details, paranteserna är mina kommentarer...):
         - Planerar utbildning:
             - Ser till att kursupplägg, schema, moduler och lärandemål hänger ihop (okay, betyder att de behöver kunna bygga 
               program och kurser på plattformen...)
@@ -28,10 +33,10 @@ public abstract class Account {
 
         - Utvecklar Utbildningsutbudet:
             - Identifierar behov, föreslår nya kurser, uppdaterar befintliga (yeah igen, mycket tillgång till statistik och översikt på plattformen...)
-            
+
     - LÄRARE -
         - adress
-        - "kunskapsområde" (ex: språklärare, natur, historia, samhälle, bild, IT, knarkbruksmentor)
+        - "kunskapsområde" (ex: språklärare, natur, historia, samhälle, bild, IT, Svampbruksmentor)
         - assigned kurser, dvs kurser läraren är knuten/ansvarar/håller i (hyfsat dynamiskt ändrade, dock static för köpte on-demand kurserna)
 
 

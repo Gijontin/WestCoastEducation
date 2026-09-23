@@ -2,9 +2,22 @@
 /*
     PLATTFORMEN SKA TA HÄNSYN TILL EN MIX AV ETT TRADITIONELLA ANSÖKNINGS PROGRAM MEN ÄVEN UDEMY-STYLE BUY2(PERMA)ACCESS KURSER ELLER
     SUBSCRIPTION-BASED FÖR FULL ACCESS UNDER SUBSCRIPTION PERIODEN...
-*/
-public class LearningItem { //tänkte först bara "Education" men bollplankade lite med LLM och kom fram till att detta var ett ännu mer neutralare och abstraktare begrepp
 
+    EN CLASS KAN BARA ÄRVA EN "ABSTRACT" MEN DEN KAN VISST IMPLEMENTERA HUR MÅNGA INTERFACE(REGLER) SOM HELST
+    ...ÄR NOG BRA ATT ANVÄNDA INTERFACE FÖR ATT KLASSA KURSER SOM KÖPBARA MED PRISSÄTTNING OCH TILLGÄNGLIHET (TYP AVSTÄNGAD FÖR KÖP I PERIODER ETC...)
+
+    ---------------------
+    EX: 
+    
+    Course : LearningItem, InterfaceItem {
+    
+        public string Skibbidi { get; } //från InterfaceItem - alla fält InterfaceItem har måste ärvas, det går INTE att plocka vad man vill...
+
+    }
+    ---------------------
+*/
+public abstract class LearningItem { //tänkte först bara "Education" men bollplankade lite med LLM och kom fram till att detta var ett ännu mer neutralare och abstraktare begrepp
+//känns som LearningItem kräver för mycket flexibilitet för att bli en Interface...
 //UTBILDNINGSFORMAT
     //Försöker gå från bredast scope kronologiskt nedstigande till det minsta Module > Program > <Olika former av kurser> etc...
     public string Module { get; set; } //jävligt abstrakt, kan vara både en del av ett program/kurser eller ett-program/en-kurs kanske bestå av moduler...
@@ -19,7 +32,8 @@ public class LearningItem { //tänkte först bara "Education" men bollplankade l
     //ATTRIBUTER FÖR FORMATEN
     public bool IsStandalone { get; set; } //Workshop är primärexemplet, men även seminar, webinar, course och lesson kan vara det | !!! INTE !!! module eller program
     /*
-    - Program-/Kursnamn
+    - Kurs-ID //bör följa ett mönster precis som "SYSÄ26M"...
+    - Program/Kurs namn/titel
     - assigned lärare
     - enlisted student
     - innehåll/description
