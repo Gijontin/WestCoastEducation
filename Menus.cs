@@ -2,7 +2,10 @@
 
 public class Menus {
     private const string arrow = "--> ";
-    
+    private void HeaderPrint() {
+        Console.Clear();
+        Console.WriteLine("Welcome to WestCoast Education - The WestCoast's Leading IT-Education Platform\n\n");
+    }
     //GÖR EN TUPLE ARRAY MED FUNKTIONER SOM GÅR ATT AKTIVERA VIA SWITCH-CASE MENU - LISTA UT ETT SÄTT ATT BLOCKERA ÅTKOMST
     //BEROENDE PÅ KONTOTYP (STUDENT == MINST ÅTKOMST...)
 
@@ -21,10 +24,13 @@ public class Menus {
     //login/accountcreate screen
     public void StartMenu() {
 
+        HeaderPrint();
         Console.WriteLine("1. Logga in som Student.");
         Console.WriteLine("2. Logga in som Lärare.");
         Console.WriteLine("3. Logga in som StudentHandledare.");
         Console.WriteLine("4. Logga in som Admin.");
+
+        GenUtils.PressToContinue();
     }
     
 /*
