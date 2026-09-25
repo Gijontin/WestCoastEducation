@@ -25,28 +25,25 @@ public abstract class LearningExperience { //bästa översättningsalternativet 
     //ATTRIBUTER FÖR FORMATEN
     
     //kandidat till composition -------
-    public CourseID CourseID { get; set; }
+    public required CourseID CourseID { get; set; }
     //---------------------------------
 
     public FieldOfStudy FieldOfStudy { get; set; } //mer för moduler/program
-    public Subject Subject { get; set; } //mer för kurser/lektioner
+    public Subject Subject { get; set; } //mer för kurser/lektioner/Seminar/Webinar/Workshop
 
-    public Instructor AssignedInstructor { get; set; } //dvs lärare, kanske list...
+    public Instructor? AssignedInstructor { get; set; } //dvs lärare, kanske list...
 
     //amen titta, tjusig aggregation
-    public List<Student> StudentList { get; set; }
+    public List<Student> StudentList { get; set; } = new();
     
     public bool IsStandalone { get; set; } //Workshop är primärexemplet, men även seminar, webinar, course och lesson kan vara det | !!! INTE !!! module eller program
-    public string Description { get; set; }
+    public required string Description { get; set; }
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
     public int TimePeriodInWeeks { get; set; } // TimeSpan skillnad = StartDate - EndDate; | TimePeriodInWeeks = skillnad.TotalDays / 7;
-    /*
-    - period/tidslängd(start/slut)
-        - längd i veckor
-    - kommunikation (period-/klass-bunden chat mellan elever OCH lärare)
-    - område (för tags, ex: IT, BYGG, HISTORIA, DESIGN, MATEMATIK etc etc...)
-        FAST OM JAG FAKTISKT LÄSER UPPGIFTEN SÅ STÅR DET KLART OCH TYDLIGT ATT WC Education SPECIALISERAT SIG PÅ TEKNISKA UTBILDNINGAR FRÄMST INOM SYS.DEV FÖR WEB OCH MOBILwmalronwlrai...
-    - video
-    */
+
+    public void SignUp() {
+        
+    }
+    //- kommunikation (period-/klass-bunden chat mellan elever OCH lärare)
 }

@@ -8,7 +8,17 @@ public class Student : Account {
         - adress
         - pågående utbildning/köpta kurser
 */
-        //EGEN LISTA FÖR KÖPTA KURSER
+    //EGEN LISTA FÖR KÖPTA KURSER
+    public List<Course> PurchasedCourses { get; private set; } = new();
 
-        //EGEN LISTA FÖR PÅGÅENDE PROGRAM/KURSER
+    //EGEN LISTA FÖR PÅGÅENDE PROGRAM/KURSER
+
+    //SIGNUP FUNKTIONER FÖR KURSER OCH SÅDANT
+    public void SignUpForCourse(Course course) {
+        
+        /*
+        if not already purchased
+        PurchasedCourses.Add(course);
+        */
+    }
 }

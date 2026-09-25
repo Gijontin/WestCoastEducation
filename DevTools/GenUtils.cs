@@ -1,7 +1,4 @@
-﻿using System.Drawing;
-using System.Runtime.InteropServices.Marshalling;
-
-namespace WestCoastEducation;
+﻿namespace WestCoastEducation;
 
 public static class GenUtils {
     public static List<Address>? AddressLista;
@@ -41,18 +38,5 @@ public static class GenUtils {
         Console.WriteLine(str);
         Console.ResetColor();
     }
-/*
-FirstName: Anna, LastName: Lindström, PreferredName: Annie, PhoneNumber: 070-1234567, Email: anna.lindstrom@example.com, PersonNumber: 19900115-1234, StreetAddress: Sveavägen 12, Region: Stockholms län, PostalCode: 11157, City: Stockholm
 
-FirstName: Johan, LastName: Berg, PreferredName: (saknas), PhoneNumber: 073-9876543, Email: johan.berg@example.com, PersonNumber: 19850622-5678, StreetAddress: Storgatan 5, Region: Västra Götalands län, PostalCode: 41124, City: Göteborg
-
-FirstName: Elin, LastName: Sundqvist, PreferredName: Elli, PhoneNumber: 072-5554433, Email: elin.sundqvist@example.com, PersonNumber: 19970303-3344, StreetAddress: Kungsgatan 44, Region: Uppsala län, PostalCode: 75318, City: Uppsala
-
-FirstName: Marcus, LastName: Holm, PreferredName: (saknas), PhoneNumber: 076-1122334, Email: marcus.holm@example.com, PersonNumber: 19921112-9988, StreetAddress: Östra Larmgatan 2, Region: Västra Götalands län, PostalCode: 41107, City: Göteborg
-
-FirstName: Sara, LastName: Nyberg, PreferredName: Sare, PhoneNumber: 070-7788990, Email: sara.nyberg@example.com, PersonNumber: 19981230-5566, StreetAddress: Norrlandsgatan 18, Region: Stockholms län, PostalCode: 11143, City: Stockholm
-
-FirstName: Oskar, LastName: Viklund, PreferredName: (saknas), PhoneNumber: 073-2211445, Email: oskar.viklund@example.com, PersonNumber: 19890319-1122, StreetAddress: Rådhusesplanaden 10, Region: Västerbottens län, PostalCode: 90328, City: Umeå
-
-*/
 }
