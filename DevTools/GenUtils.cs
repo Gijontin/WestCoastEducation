@@ -33,10 +33,20 @@ public static class GenUtils {
         Console.WriteLine("Press 'Enter' To Continue...");
         Console.ReadLine();
     }
-    public static void WriteColourLine(string str, ConsoleColor colour) {
+    public static void WriteColour(string str, ConsoleColor colour) {
+        Console.ForegroundColor = colour;
+        Console.Write(str);
+        Console.ResetColor();
+    }
+    public static void WriteColourLine(string str, ConsoleColor colour) { //"Colour" FÖRE "Line" så dyker den lättare upp i intellsense's auto-correct när man ska åt den...
         Console.ForegroundColor = colour;
         Console.WriteLine(str);
         Console.ResetColor();
     }
 
+    /*
+        TODO:
+            FÖRSÖK HITTA PÅ FLERTAL OVERLOAD METODER FÖR MENYER SÅ JAG SLIPPER GÖRA SWITCH CASE SKITEN FÖR VARJE LITEN SELECT-STUFF FUNKTION
+            SOM JAG SKAPAR... (premade menu templates som bara matar in parametrar och sköter all up/ned/Enter logik automatiskt...)
+    */
 }

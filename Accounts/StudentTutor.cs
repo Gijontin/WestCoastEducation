@@ -28,11 +28,12 @@ public class StudentTutor : Account, IAdminRights {
 */
     public string AdminID => $"ADMIN-{Address.FirstName}.{Address.LastName}";
     public override AccountType AccountType => AccountType.StudentTutor;
-    public CourseAdminTool CourseAdminTool;
-
+    public CourseAdminTool CourseAdminTool { get; }
+    public AccountAdminTool AccountAdminTool { get; }
     //CONSTRUCTOR
-    StudentTutor() {
+    public StudentTutor() {
         CourseAdminTool = new CourseAdminTool(this);
+        AccountAdminTool = new AccountAdminTool(this);
         //du injicerar hela f0kin Admin-kontot med all dess ID info in i tool-objektet
         //...med syftet att du INUTI tool-objekt då skrivit logik om vilket konto gör vad med admin tools...
         //Ex: ADMIN-Bengt.Burk removed StudentAccount "Mulle Meck", reason: luktade äckligt

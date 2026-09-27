@@ -1,4 +1,6 @@
-﻿namespace WestCoastEducation;
+﻿using System.Runtime.CompilerServices;
+
+namespace WestCoastEducation;
 
 public class Student : Account {
     public override AccountType AccountType => AccountType.Student;
@@ -12,9 +14,15 @@ public class Student : Account {
     public List<Course> PurchasedCourses { get; private set; } = new();
 
     //EGEN LISTA FÖR PÅGÅENDE PROGRAM/KURSER
-
+    public void ViewMyCourses() {
+        if (PurchasedCourses != null) {
+            foreach (var item in PurchasedCourses) {
+                Console.WriteLine(item.CourseID.TitleName);
+            }
+        }
+    }
     //SIGNUP FUNKTIONER FÖR KURSER OCH SÅDANT
-    public void SignUpForCourse(Course course) {
+    public void FindNewCourses() {
         
         /*
         if not already purchased

@@ -10,40 +10,59 @@ public class GetMenu { //BYGG OCH INITERA FUNKTIONER/MENYN GENOM KONSTRUKTORN S�
     public List<MenuItem> BuildMenu(Account account) {
         List<MenuItem> menu = new();
 
+        //Baseline som alla konton har:
+        menu.Add(new MenuItem("Visa Kontoinfo.", () => {Console.WriteLine(account.ToString()); GenUtils.PressToContinue();} ));
         /*
             EGENTLIGEN BÖR MARKER INTERFACE OCKSÅ DIKTERA VAD KONTO-TYPERNA FÅR TILLGÅNG TILL...
         */
         switch (account) {
-            case Student: {
+            case Student student: {
+                menu.Add(new MenuItem("Visa Mina Kurser.", () => student.ViewMyCourses()));
+                menu.Add(new MenuItem("Hitta Nya Kurser.", () => student.FindNewCourses()));
                 //menu.Add(new MenuItem("Lista Kursutbud", () => ));
                 //lägg till kurs på konto
             }
             break;
 
-            case Instructor: {
+            case Instructor instructor: {
                 //lista kurser du ansvarar för > se studenter anmälda till kursen
                     
             }
             break;
+    /*
+        TODO:
+            LISTA UT NÅGOT SÄTT ATT FÅ VARJE KLASS MED METODER ATT RETURNERA EN KOMPAKT LISTA MED METODER DE INNEHÅLLER
+            ISTÄLLET FÖR ATT MANUELLT SKRIVA UT VARJE FUNKTION FÖR VARJE CASE
 
-            case StudentTutor: {
-                //Kunna lägga till nya kurser
-                //Kunna lägga till nya lärare
-                //Kunna lägga till nya studerande
-                //Kunna lägga till nya handledare
+            Ex: menu.Add(ImportAccountAdminToolKit()); //eller nått... (eller det kanske måste vara en foreach loop med menu.Add([i]) )
+    */
+            case StudentTutor studentTutor: {
+            //ACCOUNT
+                menu.Add(new MenuItem("Visa Kontolista.",       () => studentTutor.AccountAdminTool.ViewAccounts()));
+                menu.Add(new MenuItem("Skapa Konto.",           () => studentTutor.AccountAdminTool.CreateAccount()));
+                menu.Add(new MenuItem("Ta Bort Konto.",         () => studentTutor.AccountAdminTool.RemoveAccount()));
+                menu.Add(new MenuItem("Uppdatera/Ändra Konto.", () => studentTutor.AccountAdminTool.UpdateAccount()));
+            //COURSE
+                menu.Add(new MenuItem("Visa Kurslista.",        () => studentTutor.CourseAdminTool.ViewCourses()));
+                menu.Add(new MenuItem("Skapa Kurs.",            () => studentTutor.CourseAdminTool.CreateCourse()));
+                menu.Add(new MenuItem("Ta Bort Kurs.",          () => studentTutor.CourseAdminTool.RemoveCourse()));
+                menu.Add(new MenuItem("Uppdatera/Ändra Konto",  () => studentTutor.CourseAdminTool.UpdateCourse()));
                 //Kunna lista kurser
                 //Kunna lista studenter
             }
             break;
 
-            case Administrator: {
-                //Kunna lägga till nya kurser
-                //Kunna lägga till nya lärare
-                //Kunna lägga till nya studerande
-                //Kunna lägga till nya handledare
-                //Kunna lägga till nya administratörer
-                //Kunna lista kurser
-                //Kunna lista studenter
+            case Administrator admin: { //när skiten är så baked in måste man ha en pseudo(?) variabel i case:et som tex "admin" - gör det på resten också bara för consistency (pattern matching handlar det om, inte alltför inuitivt ännu...)
+            //ACOUNT   
+                menu.Add(new MenuItem("Visa Kontolista.",       () => admin.AccountAdminTool.ViewAccounts()));
+                menu.Add(new MenuItem("Skapa Konto.",           () => admin.AccountAdminTool.CreateAccount()));
+                menu.Add(new MenuItem("Ta Bort Konto.",         () => admin.AccountAdminTool.RemoveAccount()));
+                menu.Add(new MenuItem("Uppdatera/Ändra Konto.", () => admin.AccountAdminTool.UpdateAccount()));
+            //COURSE
+                menu.Add(new MenuItem("Visa Kurslista.",        () => admin.CourseAdminTool.ViewCourses()));
+                menu.Add(new MenuItem("Skapa Kurs.",            () => admin.CourseAdminTool.CreateCourse()));
+                menu.Add(new MenuItem("Ta Bort Kurs.",          () => admin.CourseAdminTool.RemoveCourse()));
+                menu.Add(new MenuItem("Uppdatera/Ändra Konto",  () => admin.CourseAdminTool.UpdateCourse()));
             }
             break;
             
@@ -68,10 +87,8 @@ public class GetMenu { //BYGG OCH INITERA FUNKTIONER/MENYN GENOM KONSTRUKTORN S�
                 Console.Clear(); //ERSÄTT MED EN HEADER (som har inbyggd clear...)
                 for (int i = 0; i < MyMenu.Count; i++) {
                     if (menuIndex == i) {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write(arrow);
-                        Console.WriteLine($"{i +1}. {MyMenu[i].Label}");
-                        Console.ResetColor();
+                        GenUtils.WriteColour(arrow, ConsoleColor.Green);
+                        GenUtils.WriteColourLine($"{i +1}. {MyMenu[i].Label}", ConsoleColor.Green);
                     } else {
                         Console.WriteLine($"{i +1}. {MyMenu[i].Label}");
                     }

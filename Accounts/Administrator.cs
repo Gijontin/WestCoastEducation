@@ -13,10 +13,12 @@ public class Administrator : Account, IAdminRights {
     public string AdminID => $"ADMIN-{Address.FirstName}.{Address.LastName}";
     public override AccountType AccountType => AccountType.Admin;
 
+    public CourseAdminTool CourseAdminTool { get; }
     public AccountAdminTool AccountAdminTool { get; }
 
     //CONSTRUCTOR
-    Administrator() {
+    public Administrator() {
+        CourseAdminTool = new CourseAdminTool(this);
         AccountAdminTool = new AccountAdminTool(this); 
         //du injicerar hela f0kin Admin-kontot med all dess ID info in i tool-objektet
         //...med syftet att du INUTI tool-objekt då skrivit logik om vilket konto gör vad med admin tools...

@@ -6,26 +6,23 @@ public class Menus {
         Console.Clear();
         Console.WriteLine("Welcome to WestCoast Education - The WestCoast's Leading IT-Education Platform\n\n");
     }
-    //GÖR EN TUPLE ARRAY MED FUNKTIONER SOM GÅR ATT AKTIVERA VIA SWITCH-CASE MENU - LISTA UT ETT SÄTT ATT BLOCKERA ÅTKOMST
-    //BEROENDE PÅ KONTOTYP (STUDENT == MINST ÅTKOMST...)
-    public (string label, string placeholder)[] StartMenuListan = {
-        ("Logga in som Student", "str"),
-        ("Logga in som Lärare", "str"),
-        ("Logga in som StudentHandledare", "str"),
-        ("Logga in som Admininstratör", "str")
+
+    /*
+        TODO:
+            - ERSÄTT "string account" (med "Account account") I TUPLE-ARRAYN MED CORRESPONDING ACCOUNT KLASSER (SOM JAG DÅ INITIERAT I MAIN PROGRAM TILLS VIDARE ...FÖR TESTING)
+            - ANVÄND RÄTT ELEMENT's ACCOUNT NÄR DU TRYCKER ENTER SOM DÅ KALLAR (Konto specifika) GetMenu FUNKTIONEN SOM DYNAMISKT SKAPAR EN LISTA AV OPTIONS BASERAT PÅ VAD ETT
+              KONTO HAR TILLGÅNG TILL FÖR FUNKTIONER, TEX STUDENT KAN KOLLA KURSUTBUD MEDANS EN ADMIN/STUDENTTUTOR KAN SKAPA KURSER M.M...
+
+            - SÅ, I ENTER TRYCKER I SWITCH CASET SKA ETT FUNGERANDE new GetMenu(StartMenuListan[menuIndex].account); GÖRAS...
+    
+    */
+    public (string label, Account account)[] StartMenuListan = {
+        ("Logga in som Student", DataBase.AllAccounts[0]),
+        ("Logga in som Lärare", DataBase.AllAccounts[1]),
+        ("Logga in som StudentHandledare", DataBase.AllAccounts[2]),
+        ("Logga in som Admininstratör", DataBase.AllAccounts[3])
     };
-        /*
-            Jag skapar en plattform-global lista som håller kurser - låter SH/Admin skapa kurser och lägga i listan som sparas
-            i .json och laddas in vid programstart...
 
-            SH och Admin ska ha tillgång till att kalla metoder i CourseAdminTool.cs
-            SH och Admin ska modulärt kunna lägga till och ta bort lärare ifrån en kurs
-
-            Studenter ska kunna bläddra listan och se kursinfo 
-            Studenter ska kunna spara(cache) kurser i sin egna profils kurslista (kanske tom disk-spara)
-
-            Lärare ska kunna se kursinfo över de kurs de håller i, samt en studentlista över studenter som är anmälda till klassen
-        */
     //login/accountcreate screen
     public void StartMenu() {
         int menuIndex = 0;
@@ -37,10 +34,8 @@ public class Menus {
 
                 for (int i = 0; i < 4; i++) {
                     if (menuIndex == i) {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write(arrow);
-                        Console.WriteLine($"{i +1}. {StartMenuListan[i].label}");
-                        Console.ResetColor();
+                        GenUtils.WriteColour(arrow, ConsoleColor.Green);
+                        GenUtils.WriteColourLine($"{i +1}. {StartMenuListan[i].label}", ConsoleColor.Green);
                     } else {
                         Console.WriteLine($"{i +1}. {StartMenuListan[i].label}");
                     }
@@ -69,16 +64,20 @@ public class Menus {
                         } 
                     }
                     break;
-                //RIGHT > FORWARD
-                    case ConsoleKey.D or ConsoleKey.RightArrow: {}
-                    break;
+
                 //LEFT > BACK
                     case ConsoleKey.A or ConsoleKey.LeftArrow: {}
                     break;
+
+            //"RIGHT" DRIP-FILTER IN MED SAMMA FUNKTION SOM 'ENTER' TRYCK ...FOR NOW
+                //RIGHT > FORWARD
+                    case ConsoleKey.D or ConsoleKey.RightArrow:
                 //ACTIVATE/USE
-                    case ConsoleKey.Enter: {}
+                    case ConsoleKey.Enter: {
+                        new GetMenu(StartMenuListan[menuIndex].account);
+                    }
                     break;
-                    
+
                 //MISC.
                     default:
                         break;
