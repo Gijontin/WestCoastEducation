@@ -14,4 +14,8 @@ public class Instructor : Account {
     public DateTime EmploymentStartDate { get; set; }
 
     public override AccountType AccountType => AccountType.Instructor;
+
+    public override string ToString() {
+        return $"{Address.FirstName} {Address.LastName}";
+    }
 }

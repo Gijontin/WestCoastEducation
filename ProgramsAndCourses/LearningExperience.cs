@@ -17,33 +17,37 @@
     ---------------------
 */
 public abstract class LearningExperience { //bästa översättningsalternativet jag hittade för "läroform"
-//UTBILDNINGSFORMAT
-    //Försöker gå från bredast scope kronologiskt nedstigande till det minsta Module > Program > <Olika former av kurser> etc...
 
-    //public string Program { get; set; }
+    //public string Program { get; set; } //skiter i denna tills vidare för den kolliderar med (main)Program
     
-    //ATTRIBUTER FÖR FORMATEN
-    
-    //kandidat till composition -------
-    public required CourseID CourseID { get; set; }
-    //---------------------------------
-
+//ATTRIBUTER/FÄLT/TRAMS
+    public CourseID CourseID { get; set; } //kandidat till composition (done!) //note: set till "required" senare
     public FieldOfStudy FieldOfStudy { get; set; } //mer för moduler/program
     public Subject Subject { get; set; } //mer för kurser/lektioner/Seminar/Webinar/Workshop
-
-    public Instructor? AssignedInstructor { get; set; } //dvs lärare, kanske list...
-
-    //amen titta, tjusig aggregation
-    public List<Student> StudentList { get; set; } = new();
-    
+    public string Description { get; set; } //note: set till "required" senare
     public bool IsStandalone { get; set; } //Workshop är primärexemplet, men även seminar, webinar, course och lesson kan vara det | !!! INTE !!! module eller program
-    public required string Description { get; set; }
+
+    //Personer involverade
+    public Instructor? AssignedInstructor { get; set; } //dvs lärare, skiter i list just nu men annars är det smartare för en parent då den täcker större program också (men en Module kanske automatiskt kan hämta vilka lärare som ingår själv, polymorfism?)
+    public List<Student> StudentList { get; set; } = new(); //amen titta, tjusig aggregation
+  
+    //i tid och otid
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
     public int TimePeriodInWeeks { get; set; } // TimeSpan skillnad = StartDate - EndDate; | TimePeriodInWeeks = skillnad.TotalDays / 7;
 
-    public void SignUp() {
-        
+//FUNKTIONER
+    public void SignUp(Student student) {
+        StudentList.Add(student); //man vill nog ha denna processen i en helt separat lista med signup som gås igenom och behandlas separat, kanske bara en tag för vilken kurs man ansöker
+    }
+    public void ShowDescription() {
+        if (string.IsNullOrEmpty(Description)) 
+            {return;}
+
+        Console.WriteLine(Description);
     }
     //- kommunikation (period-/klass-bunden chat mellan elever OCH lärare)
+        // - Group Chat / Chat Room
+        // - Private Messaging to Teacher
+        // - Private Messing between signed up Students
 }

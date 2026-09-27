@@ -15,6 +15,7 @@ public class GetMenu { //BYGG OCH INITERA FUNKTIONER/MENYN GENOM KONSTRUKTORN S�
         /*
             EGENTLIGEN BÖR MARKER INTERFACE OCKSÅ DIKTERA VAD KONTO-TYPERNA FÅR TILLGÅNG TILL...
         */
+
         switch (account) {
             case Student student: {
                 menu.Add(new MenuItem("Visa Mina Kurser.", () => student.ViewMyCourses()));
@@ -67,6 +68,7 @@ public class GetMenu { //BYGG OCH INITERA FUNKTIONER/MENYN GENOM KONSTRUKTORN S�
             break;
             
             default:
+                Console.WriteLine("\nInget case matchade..."); GenUtils.PressToContinue();
                 break;
         }
 

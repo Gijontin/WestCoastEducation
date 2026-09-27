@@ -1,6 +1,6 @@
 ﻿namespace WestCoastEducation;
 
-public enum DeliveryType {
+public enum LearningFormat {
     Online,
     OnCampus,
     Hybrid

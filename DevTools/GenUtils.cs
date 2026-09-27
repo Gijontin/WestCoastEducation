@@ -30,7 +30,7 @@ public static class GenUtils {
         };
     }
     public static void PressToContinue() {
-        Console.WriteLine("Press 'Enter' To Continue...");
+        Console.WriteLine("\nPress 'Enter' To Continue...");
         Console.ReadLine();
     }
     public static void WriteColour(string str, ConsoleColor colour) {

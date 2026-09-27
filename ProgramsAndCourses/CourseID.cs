@@ -2,9 +2,9 @@
 
 public class CourseID
 {
-    public string ID { get; set; } 
-    public required string TitleName { get; set; }
-    public DeliveryType DeliveryType { get; set; } //distans, klassrum, hybrid, etc...
+    public string ID { get; set; }        //note: set till "required" senare
+    public string TitleName { get; set; } //note: set till "required" senare
+    public LearningFormat DeliveryType { get; set; } //distans, klassrum, hybrid, etc...
 
     public string CreateID() {
         string acronymifier = "";

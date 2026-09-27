@@ -55,4 +55,8 @@ public class JsonIO {
         //deserialize:a den råa textfilen till önskat format (tex en lista med objekt eller bara objekt etc)
         DataBase.AllCourses = JsonSerializer.Deserialize<List<Course>>(tempStr, option) ?? new List<Course>(); //static list så den finns men annars gör "?? new List<Course>();" en ny instans för "AllCourse" om den inte finns
     }
+    public void UpdateCourseListData() {
+        SaveCourseListToDisk();
+        LoadCourseListFromDisk();
+    }
 }
