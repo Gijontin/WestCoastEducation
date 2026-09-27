@@ -1,6 +1,6 @@
 ﻿namespace WestCoastEducation;
 
-public class AccountAdminTool(IAdminRights AdminID) {
+public class AccountAdminTool(IAdminRights AdminID) : Tools {
     /*
     VIKTIGT:
         - BARA StudentTutors och Admins får tillgång till dessa funktioner

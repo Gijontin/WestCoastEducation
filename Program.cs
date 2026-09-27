@@ -3,6 +3,7 @@
 class Program
 {
     static void Main() {
+    JsonIO jsonIO = new();
 /*
     TODO: (DONE!)
         - SKAPA TEST KONTON FÖR VARJE KLASS (student, lärare etc...)
