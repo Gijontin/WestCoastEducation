@@ -12,9 +12,11 @@ public class Course : LearningExperience {
         string startdate = StartDate.ToShortDateString() ?? "?";
         string enddate = EndDate.ToShortDateString() ?? "?";
         
-        GenUtils.WriteColourLine($"{title} | {subject}:", ConsoleColor.Yellow);
-        return $"Plats: {deliverytype} | Period: {startdate} to {enddate} | Längd: {weeks} Veckor\n"; //skriv om denna till att returnera ALL relevant info för en kurs man är nyfiken på ...i ett format för en CLI miljö då
+        //kanske ha ämnesspalten under titel (också med egen färg, fast mindre dominant än titelns) men även om det blir extra najs clarity så börjar det bli lite "chonkigt" om jag har tre rader per kurs, så maybe not...
+        GenUtils.WriteColourLine($"{title} | Ämne: {subject}:", ConsoleColor.Yellow);
+        return $"Plats: {deliverytype} | Period: {startdate} till {enddate} | Längd: {weeks} Veckor\n"; //skriv om denna till att returnera ALL relevant info för en kurs man är nyfiken på ...i ett format för en CLI miljö då
         //return $"- {title} | {subject}:\n  Plats: {deliverytype} | Period: {startdate} to {enddate} | Längd: {weeks} Veckor\n"; //skriv om denna till att returnera ALL relevant info för en kurs man är nyfiken på ...i ett format för en CLI miljö då
+    
     
     //kasserade format
         //return $"- {title} | {subject} | Lärare: {instructor} | Längd: {weeks} Veckor"; //skriv om denna till att returnera ALL relevant info för en kurs man är nyfiken på ...i ett format för en CLI miljö då

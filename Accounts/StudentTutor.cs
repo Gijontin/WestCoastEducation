@@ -30,6 +30,7 @@ public class StudentTutor : Account, IAdminRights {
     public override AccountType AccountType => AccountType.StudentTutor;
     public CourseAdminTool CourseAdminTool { get; }
     public AccountAdminTool AccountAdminTool { get; }
+    
     //CONSTRUCTOR
     public StudentTutor() {
         CourseAdminTool = new CourseAdminTool(this);

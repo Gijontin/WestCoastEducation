@@ -1,5 +1,9 @@
 ﻿namespace WestCoastEducation;
 
+    /*
+        TODO:
+            - Logsystem för användning av domänverktygsfunktioner på admin-nivå
+    */
 public static class SystemLogs {
     private static List<string> SystemLog = [];
 

@@ -1,11 +1,12 @@
 ﻿namespace WestCoastEducation;
 
 public class CourseAdminTool(IAdminRights AdminID) : Tools {
+/* 
+
+    NOTE: FLYTTAD TILL PublicTools.cs
+
+
     public void ViewCourses() {
-
-    //Pinfärskt uppdaterad från "DataBasen"
-        jsonIO.LoadCourseListFromDisk();
-
         //bara printa ut hela listan med enskilda kursutbudet, får spåna på hur mycket detaljer som behövs OCH CLI-format...
         if (DataBase.AllCourses == null || DataBase.AllCourses.Count < 1) {
             Console.WriteLine("Antal kurser: " + (DataBase.AllCourses?.Count ?? -1)); GenUtils.PressToContinue();
@@ -18,6 +19,7 @@ public class CourseAdminTool(IAdminRights AdminID) : Tools {
         }
         GenUtils.PressToContinue();
     }
+*/
     public void CreateCourse() {
         Course course = FillInFields();
             course.CourseID = CreateCourseID();
@@ -47,10 +49,14 @@ public class CourseAdminTool(IAdminRights AdminID) : Tools {
         }
 
     public void RemoveCourse() {
+        GenUtils.WriteColourLine("\nFunktion under konstruktion.", ConsoleColor.Cyan);
+        GenUtils.PressToContinue();
         //något sätt att select:a för att sedan bara köra .Remove
         SystemLogs.SysLog(AdminID.AdminID);
     }
     public void UpdateCourse() {
+        GenUtils.WriteColourLine("\nFunktion under konstruktion.", ConsoleColor.Cyan);
+        GenUtils.PressToContinue();
         //ändra en kurs på databas(disk) nivå
         SystemLogs.SysLog(AdminID.AdminID);
     }

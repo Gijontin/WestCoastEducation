@@ -4,11 +4,17 @@ using System.Text.Encodings.Web;
 namespace WestCoastEducation;
 /*
     TODO:
+        - Refactor Save- och Load-ToDisk som massa overload metoder istället, avgörande parametern blir nog de olika typerna av listorn som måste in
+          i parametrarna, för de olika premade const string:sen är nog inte tillräckligt för att C# ska kunna urskilja dem.
+          + IAdminRights kan nog funka på overloads också för att blocka vissa metoder från att kunna användas av obehöriga konton, unsure...
+
+    MYCKET SENARE TODO:
         - Kolla senare på hur man skulle kalla denna med dependancy-injection/singleton grejs, vilket verkar vara standarden för webappar och sådant, typ ASP.NET Core :
             services.AddSingleton<JsonIO>();
             services.AddTransient<CourseAdminTool>();
 
 */
+
 public class JsonIO {
     //för att folks system ser olika ut så bygger vi filvägen såhär...
     private string BaseDataPath = Environment.CurrentDirectory;
@@ -23,6 +29,7 @@ public class JsonIO {
             Console.WriteLine("Det finns inget att spara.");
             return;
         }
+        //så för overload byter jag bara ut namnet till typ "FullDataPath" eller något och om det är admin privilege nivå saker så kan overload-parametern kanske också kräva "IAdminRights" för att låsa bort den från obehöriga konton...?
         string CourseListDataPath = string.Concat(BaseDataPath, CourseList);
 
         //formatera sträng inför WriteFile
@@ -33,6 +40,7 @@ public class JsonIO {
 
     }
     public void LoadCourseListFromDisk() { //tror jag skippar marker interface här iochmed det tekniskt sett bara är en automatiserad serverprocess att ladda databasen ...till skillnad från att faktiskt spara nya kurser på den...
+        //byt till "FullDataPath" när jag refactor:ar dessa till overload metoder istället
         string CourseListDataPath = string.Concat(BaseDataPath, CourseList);
     
     //SAFETY CHECK SÅ ATT LISTAN FINNS
@@ -55,7 +63,7 @@ public class JsonIO {
         //deserialize:a den råa textfilen till önskat format (tex en lista med objekt eller bara objekt etc)
         DataBase.AllCourses = JsonSerializer.Deserialize<List<Course>>(tempStr, option) ?? new List<Course>(); //static list så den finns men annars gör "?? new List<Course>();" en ny instans för "AllCourse" om den inte finns
     }
-    public void UpdateCourseListData() {
+    public void UpdateCourseListData() { //snabb och smutsigt som dä säger i ameri-katt
         SaveCourseListToDisk();
         LoadCourseListFromDisk();
     }

@@ -38,15 +38,18 @@ public abstract class LearningExperience { //bästa översättningsalternativet 
 
 //FUNKTIONER
     public void SignUp(Student student) {
-        StudentList.Add(student); //man vill nog ha denna processen i en helt separat lista med signup som gås igenom och behandlas separat, kanske bara en tag för vilken kurs man ansöker
+        StudentList.Add(student); //man vill nog ha denna processen i en helt separat lista med signup som gås igenom och behandlas separat, kanske bara en 'tag' för vilken kurs man ansöker
     }
     public void ShowDescription() {
-        if (string.IsNullOrEmpty(Description)) 
-            {return;}
+        if (string.IsNullOrEmpty(Description)) {
+            GenUtils.WriteColourLine("\nBeskrivning saknas.", ConsoleColor.Yellow);
+            GenUtils.PressToContinue();
+            return;
+        }
 
         Console.WriteLine(Description);
     }
-    //- kommunikation (period-/klass-bunden chat mellan elever OCH lärare)
+    //- kommunikation (period-/klass-bunden chat mellan elever OCH/ELLER lärare)
         // - Group Chat / Chat Room
         // - Private Messaging to Teacher
         // - Private Messing between signed up Students

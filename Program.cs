@@ -4,9 +4,9 @@ class Program
 {
     static void Main() {
 /*
-    TODO: (DONE!)
-        - SKAPA TEST KONTON FÖR VARJE KLASS (student, lärare etc...)
-        - FIXA SÅ ATT DE FUNGERAR IHOPA MED Menus.cs och GetMenu.cs....
+    TODO: 
+        (DONE!) - SKAPA TEST KONTON FÖR VARJE KLASS (student, lärare etc...)
+        (DONE!) - FIXA SÅ ATT DE FUNGERAR IHOPA MED Menus.cs och GetMenu.cs....
         
         Skapa pseudo-konton:
             1   st Student
@@ -15,15 +15,25 @@ class Program
             1   st Admin
 
     TODO:
-        - Utveckla CourseAdminTools till att åtminstone kunna skapa en helt proper Course ifrån kallad funktion (och lägga till den i general kurs DataBas)
+        - Fixa fullständig kontoskapning för SH/Admin
+        - Visa Konton kanske ska för-sortera efter kontotyp innan den visar registrationslistan...
+
+        (SEMI-DONE!) - Utveckla CourseAdminTools till att åtminstone kunna skapa en helt proper Course ifrån kallad funktion (och lägga till den i general kurs DataBas)
         - Fixa så att LearningExperience's ToString override:as till att skriva ut CourseID info och lite sådant i en one-liner för att lätt
           kunna användas i en vanlig foreach loop's WriteLine över kursutbud...
-        - Sätt nuvarande Account's ToString funktion till en mer elegant "VisaInfo" funktion och behåll ToString i ett simpelt one-line format för List printfs
+        (DONE!) - Sätt nuvarande Account's ToString funktion till en mer elegant "VisaInfo" funktion och behåll ToString i ett simpelt one-line format för List printfs
         
         - Fixa AccountAdminTools till att kunna skapa vilket typ av konto so helst genom bara en funktion (student, lärare, sh, admin, doesn't matter..)
 
-        - Koda en IO disk save/load manager i .json format specifikt för kurser, inget annat ...for now (generella DataBasen med kurser tror jag är bäst, skit i student's list...)
+        (DONE!) - Koda en IO disk save/load manager i .json format specifikt för kurser, inget annat ...for now (generella DataBasen med kurser tror jag är bäst, skit i student's list...)
+
+    FRAMTIDA TODO:
+        - Kolla in policy-baserad åtkomst via en "policy engine" - istället för att dela upp "tjänster" så är dem fullständiga men restrikterade via tags n shid...
+          läste att det är typ så ASP.NET fungerar, antagligen så jag behöver(och vill) göra om jag ska försöka göra en riktig skolplattform i framtiden ...which I do want to do såatteh...
 */      
+    
+    //Kvick Än Dörty init-and-toss-objekt grej för att ladda in databas(-er), fulare än fuskbygge ...nästan 
+        new JsonIO().LoadCourseListFromDisk();
 
         GenUtils.AddressLista = GenUtils.GenerateSix();
 
@@ -38,6 +48,8 @@ class Program
             Address = GenUtils.AddressLista[1],
             TimeOfCreationDate = DateTime.Now,
         };
+        newInstructor.SubjectAreas.Add(SubjectArea.Cybersecurity);
+        newInstructor.SubjectAreas.Add(SubjectArea.SoftwareEngineer);
         DataBase.AllAccounts.Add(newInstructor);
     //TEST STUDENTHANDLEDARE
         StudentTutor newStudentTutor = new() {

@@ -22,7 +22,9 @@ public class Student : Account {
         }
     }
     //SIGNUP FUNKTIONER FÖR KURSER OCH SÅDANT
-    public void FindNewCourses() {
+    public void FindNewCourses() { //REFACTOR NAMN, SKA EGENTLIGEN VARA NÅGON FORM AV "LÄGG TILL/ANSÖK KURS" SKA MEST TROLIGT EGENTLIGEN INTE ENS VARA PÅ STUDENTKONTOT....
+        GenUtils.WriteColourLine("\nFunktion under konstruktion.", ConsoleColor.Cyan);
+        GenUtils.PressToContinue();
         
         /*
         if not already purchased

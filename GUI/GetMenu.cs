@@ -2,7 +2,7 @@ namespace WestCoastEducation;
 /*
     PLACEHOLDER CLASS FÖR JAG HAR INGEN BACKEND ÄNDÅ.
 
-    ...ANNARS HAR MAN SÅKLART INTE DENNA SKITEN I CLIENT...
+    ...ANNARS HAR MAN SÅKLART INTE DIREKT-TILLGÅNG TILL SÅDANT HÄR I CLIENT...
 */
 public class GetMenu { //BYGG OCH INITERA FUNKTIONER/MENYN GENOM KONSTRUKTORN SÅ ATT DET BARA BLIR ETT ONE-LINE-CALL I "Menus.cs"
     private const string arrow = "--> ";
@@ -10,8 +10,10 @@ public class GetMenu { //BYGG OCH INITERA FUNKTIONER/MENYN GENOM KONSTRUKTORN S�
     public List<MenuItem> BuildMenu(Account account) {
         List<MenuItem> menu = new();
 
-        //Baseline som alla konton har:
-        menu.Add(new MenuItem("Visa Kontoinfo.", () => {Console.WriteLine(account.ToString()); GenUtils.PressToContinue();} ));
+    //Baseline som alla konton har:
+        //menu.Add(new MenuItem("Visa Kontoinfo.", () => {Console.WriteLine(account.ToString()); GenUtils.PressToContinue();})); //mer för admin överseende-grejs (hade bara här för att testa)
+        menu.Add(new MenuItem("Visa KontoUppgifter.", () => account.ShowAccountInfo()));
+        menu.Add(new MenuItem("Visa Kursutbud.", () => account.PublicTools.ViewCourses()));
         /*
             EGENTLIGEN BÖR MARKER INTERFACE OCKSÅ DIKTERA VAD KONTO-TYPERNA FÅR TILLGÅNG TILL...
         */
@@ -27,6 +29,7 @@ public class GetMenu { //BYGG OCH INITERA FUNKTIONER/MENYN GENOM KONSTRUKTORN S�
 
             case Instructor instructor: {
                 //lista kurser du ansvarar för > se studenter anmälda till kursen
+                menu.Add(new MenuItem("Visa Mina Kursuppdrag.", () => instructor.ViewHeldCourses()));
                     
             }
             break;
@@ -39,12 +42,12 @@ public class GetMenu { //BYGG OCH INITERA FUNKTIONER/MENYN GENOM KONSTRUKTORN S�
     */
             case StudentTutor studentTutor: {
             //ACCOUNT
-                menu.Add(new MenuItem("Visa Kontolista.",       () => studentTutor.AccountAdminTool.ViewAccounts()));
+                menu.Add(new MenuItem("Visa Registrerade Konton.",       () => studentTutor.AccountAdminTool.ViewAccounts()));
                 menu.Add(new MenuItem("Skapa Konto.",           () => studentTutor.AccountAdminTool.CreateAccount()));
                 menu.Add(new MenuItem("Ta Bort Konto.",         () => studentTutor.AccountAdminTool.RemoveAccount()));
                 menu.Add(new MenuItem("Uppdatera/Ändra Konto.", () => studentTutor.AccountAdminTool.UpdateAccount()));
             //COURSE
-                menu.Add(new MenuItem("Visa Kurslista.",        () => studentTutor.CourseAdminTool.ViewCourses()));
+                //menu.Add(new MenuItem("Visa Kurslista.",        () => studentTutor.PublicTools.ViewCourses())); //generell så den ligger redan adderad innan switch-case:et
                 menu.Add(new MenuItem("Skapa Kurs.",            () => studentTutor.CourseAdminTool.CreateCourse()));
                 menu.Add(new MenuItem("Ta Bort Kurs.",          () => studentTutor.CourseAdminTool.RemoveCourse()));
                 menu.Add(new MenuItem("Uppdatera/Ändra Konto",  () => studentTutor.CourseAdminTool.UpdateCourse()));
@@ -55,12 +58,12 @@ public class GetMenu { //BYGG OCH INITERA FUNKTIONER/MENYN GENOM KONSTRUKTORN S�
 
             case Administrator admin: { //när skiten är så baked in måste man ha en pseudo(?) variabel i case:et som tex "admin" - gör det på resten också bara för consistency (pattern matching handlar det om, inte alltför inuitivt ännu...)
             //ACOUNT   
-                menu.Add(new MenuItem("Visa Kontolista.",       () => admin.AccountAdminTool.ViewAccounts()));
+                menu.Add(new MenuItem("Visa Registrerade Konton.",       () => admin.AccountAdminTool.ViewAccounts()));
                 menu.Add(new MenuItem("Skapa Konto.",           () => admin.AccountAdminTool.CreateAccount()));
                 menu.Add(new MenuItem("Ta Bort Konto.",         () => admin.AccountAdminTool.RemoveAccount()));
                 menu.Add(new MenuItem("Uppdatera/Ändra Konto.", () => admin.AccountAdminTool.UpdateAccount()));
             //COURSE
-                menu.Add(new MenuItem("Visa Kurslista.",        () => admin.CourseAdminTool.ViewCourses()));
+                //menu.Add(new MenuItem("Visa Kurslista.",        () => admin.PublicTools.ViewCourses())); //generell så den ligger redan adderad innan switch-case:et
                 menu.Add(new MenuItem("Skapa Kurs.",            () => admin.CourseAdminTool.CreateCourse()));
                 menu.Add(new MenuItem("Ta Bort Kurs.",          () => admin.CourseAdminTool.RemoveCourse()));
                 menu.Add(new MenuItem("Uppdatera/Ändra Konto",  () => admin.CourseAdminTool.UpdateCourse()));
@@ -68,15 +71,16 @@ public class GetMenu { //BYGG OCH INITERA FUNKTIONER/MENYN GENOM KONSTRUKTORN S�
             break;
             
             default:
-                Console.WriteLine("\nInget case matchade..."); GenUtils.PressToContinue();
+                //PRINTF DEBUG
+                //Console.WriteLine("\nInget case matchade..."); GenUtils.PressToContinue(); 
                 break;
         }
 
     //TODO: feeet överkurs men ett "go back" option hade varit coolt
-        menu.Add(new MenuItem("Back (Placeholder, this will also 'Exit' for now...)", () => Environment.Exit(0))); //PLACEHOLDER FUNKTION!!!
+        menu.Add(new MenuItem("Back (Placeholder, this will also 'Exit' for now...)", () => {Console.Clear(); Environment.Exit(0);})); //PLACEHOLDER FUNKTION!!!
 
     //avslutar alltid med exit
-        menu.Add(new MenuItem("Exit", () => Environment.Exit(0)));
+        menu.Add(new MenuItem("Exit", () => {Console.Clear(); Environment.Exit(0);}));
 
         return menu;
     }
@@ -130,7 +134,7 @@ public class GetMenu { //BYGG OCH INITERA FUNKTIONER/MENYN GENOM KONSTRUKTORN S�
                         try {
                             MyMenu[menuIndex].Callback(); //kanske kraschar om den inte har något i sig eller blir fel (så kan förhoppningsvis fuska med en try-catch)
                         } catch {
-                                
+                            //debug log: "GetMenu callback activation on Enter-press krasch" typ något sådant
                         }
                     }
                     break;

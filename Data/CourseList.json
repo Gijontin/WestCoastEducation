@@ -3,7 +3,7 @@
     "CourseID": {
       "ID": null,
       "TitleName": "Rubbat och Skrubbat, Master",
-      "DeliveryType": 0
+      "DeliveryType": 1
     },
     "FieldOfStudy": 0,
     "Subject": 0,
@@ -36,6 +36,22 @@
       "ID": null,
       "TitleName": "Toaletbes\u00F6k, Grund",
       "DeliveryType": 0
+    },
+    "FieldOfStudy": 0,
+    "Subject": 0,
+    "Description": null,
+    "IsStandalone": false,
+    "AssignedInstructor": null,
+    "StudentList": [],
+    "StartDate": "0001-01-01T00:00:00",
+    "EndDate": "0001-01-01T00:00:00",
+    "TimePeriodInWeeks": 0
+  },
+  {
+    "CourseID": {
+      "ID": null,
+      "TitleName": "Fotv\u00E5rd f\u00F6r Tam M\u00E5rd, Expert",
+      "DeliveryType": 2
     },
     "FieldOfStudy": 0,
     "Subject": 0,

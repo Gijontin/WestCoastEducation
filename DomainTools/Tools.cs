@@ -6,5 +6,5 @@
 */
 public abstract class Tools {
     //protected så inga andra klasser än parent/child kan komma åt dem, i detta fallet tror jag inte 
-    protected JsonIO jsonIO { get; } = new JsonIO(); //får skriva mer avancerade begränsningar sen när studenter behöver tillgång till någon form av json sparande de med, för tex utskrift...
+    protected JsonIO jsonIO { get; } = new JsonIO(); //får skriva mer avancerade begränsningar (inuti JsionIO) sen när studenter behöver tillgång till någon form av json sparande de med, för tex utskrift...
 }
