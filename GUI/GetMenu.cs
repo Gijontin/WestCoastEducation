@@ -13,7 +13,7 @@ public class GetMenu { //BYGG OCH INITERA FUNKTIONER/MENYN GENOM KONSTRUKTORN S�
     //Baseline som alla konton har:
         //menu.Add(new MenuItem("Visa Kontoinfo.", () => {Console.WriteLine(account.ToString()); GenUtils.PressToContinue();})); //mer för admin överseende-grejs (hade bara här för att testa)
         menu.Add(new MenuItem("Visa KontoUppgifter.", () => account.ShowAccountInfo()));
-        menu.Add(new MenuItem("Visa Kursutbud.", () => account.PublicTools.ViewCourses()));
+        menu.Add(new MenuItem("Visa Kursutbud.", () => account.PublicTools.ViewCourses(account)));
         /*
             EGENTLIGEN BÖR MARKER INTERFACE OCKSÅ DIKTERA VAD KONTO-TYPERNA FÅR TILLGÅNG TILL...
         */
@@ -21,7 +21,7 @@ public class GetMenu { //BYGG OCH INITERA FUNKTIONER/MENYN GENOM KONSTRUKTORN S�
         switch (account) {
             case Student student: {
                 menu.Add(new MenuItem("Visa Mina Kurser.", () => student.ViewMyCourses()));
-                menu.Add(new MenuItem("Hitta Nya Kurser.", () => student.FindNewCourses()));
+                //menu.Add(new MenuItem("Hitta Nya Kurser.", () => student.FindNewCourses())); //funktionaliteten inbyggd i "Visa Kursutbud" ...for now
                 //menu.Add(new MenuItem("Lista Kursutbud", () => ));
                 //lägg till kurs på konto
             }
@@ -50,7 +50,7 @@ public class GetMenu { //BYGG OCH INITERA FUNKTIONER/MENYN GENOM KONSTRUKTORN S�
                 //menu.Add(new MenuItem("Visa Kurslista.",        () => studentTutor.PublicTools.ViewCourses())); //generell så den ligger redan adderad innan switch-case:et
                 menu.Add(new MenuItem("Skapa Kurs.",            () => studentTutor.CourseAdminTool.CreateCourse()));
                 menu.Add(new MenuItem("Ta Bort Kurs.",          () => studentTutor.CourseAdminTool.RemoveCourse()));
-                menu.Add(new MenuItem("Uppdatera/Ändra Konto",  () => studentTutor.CourseAdminTool.UpdateCourse()));
+                menu.Add(new MenuItem("Uppdatera/Ändra Kurs",  () => studentTutor.CourseAdminTool.UpdateCourse()));
                 //Kunna lista kurser
                 //Kunna lista studenter
             }
@@ -66,7 +66,7 @@ public class GetMenu { //BYGG OCH INITERA FUNKTIONER/MENYN GENOM KONSTRUKTORN S�
                 //menu.Add(new MenuItem("Visa Kurslista.",        () => admin.PublicTools.ViewCourses())); //generell så den ligger redan adderad innan switch-case:et
                 menu.Add(new MenuItem("Skapa Kurs.",            () => admin.CourseAdminTool.CreateCourse()));
                 menu.Add(new MenuItem("Ta Bort Kurs.",          () => admin.CourseAdminTool.RemoveCourse()));
-                menu.Add(new MenuItem("Uppdatera/Ändra Konto",  () => admin.CourseAdminTool.UpdateCourse()));
+                menu.Add(new MenuItem("Uppdatera/Ändra Kurs",  () => admin.CourseAdminTool.UpdateCourse()));
             }
             break;
             

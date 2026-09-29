@@ -28,8 +28,8 @@ public abstract class Account {
         Console.WriteLine(); //litta extra spejs för clarity
 
 /*
-        //.NET 11 verkar få en funktion som kan hantera "raw string literals" såhär, men har 10 så får 
-        // utkommentera detta och använda den omständiga lösningen under... (pallar inte skriva kod som städar mellanslag och sådant bara för att det
+        //.NET 11 verkar få en funktion som kan hantera "raw string literals" såhär, men har 10 så får jag
+        //utkommentera detta och använda den omständiga lösningen under... (pallar inte skriva kod som städar mellanslag och sådant bara för att det
         ska se normalt ut i källkoden...)
         Console.WriteLine(
         $@"========================================

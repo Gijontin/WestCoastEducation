@@ -8,9 +8,9 @@ class Program
         (DONE!) - SKAPA TEST KONTON FÖR VARJE KLASS (student, lärare etc...)
         (DONE!) - FIXA SÅ ATT DE FUNGERAR IHOPA MED Menus.cs och GetMenu.cs....
         
-        Skapa pseudo-konton:
+    (DONE!)Skapa pseudo-konton:
             1   st Student
-            2-3 st Lärare
+            1   st Lärare
             1   st StudentHandledare (SH)
             1   st Admin
 
@@ -35,14 +35,26 @@ class Program
     //Kvick Än Dörty init-and-toss-objekt grej för att ladda in databas(-er), fulare än fuskbygge ...nästan 
         new JsonIO().LoadCourseListFromDisk();
 
+//HARDCODED STUFF FOR INSTANT DEMO -------------------------------------------------------------- (START)
+    //lägger in 6 hardcoded adresser i globala listan för ggez hårdkodad kontoskapning
         GenUtils.AddressLista = GenUtils.GenerateSix();
 
     //TEST STUDENT
-        Student newStudent = new() {
+        Student newStudent0 = new() {
             Address = GenUtils.AddressLista[0],
             TimeOfCreationDate = DateTime.Now,
         };
-        DataBase.AllAccounts.Add(newStudent);
+        DataBase.AllAccounts.Add(newStudent0);
+        Student newStudent1 = new() {
+            Address = GenUtils.AddressLista[4],
+            TimeOfCreationDate = DateTime.Now,
+        };
+        DataBase.AllAccounts.Add(newStudent1);
+        Student newStudent2 = new() {
+            Address = GenUtils.AddressLista[5],
+            TimeOfCreationDate = DateTime.Now,
+        };
+        DataBase.AllAccounts.Add(newStudent2);
     //TEST LÄRARE
         Instructor newInstructor = new() {
             Address = GenUtils.AddressLista[1],
@@ -63,6 +75,8 @@ class Program
             TimeOfCreationDate = DateTime.Now,
         };
         DataBase.AllAccounts.Add(newAdmin);
+//----------------------------------------------------------------------------------------------- (END)
+
 
     //Måste initieras EFTER accounts (eftersom den inte hanterar en tom AllAccounts lista(?) ...ännu)    
         Menus newMenu = new();

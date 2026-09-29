@@ -18,9 +18,9 @@ public class Menus {
     */
     public (string label, Account account)[] StartMenuListan = {
         ("Logga in som Student", DataBase.AllAccounts[0]),
-        ("Logga in som Lärare", DataBase.AllAccounts[1]),
-        ("Logga in som StudentHandledare", DataBase.AllAccounts[2]),
-        ("Logga in som Admininstratör", DataBase.AllAccounts[3])
+        ("Logga in som Lärare", DataBase.AllAccounts[3]),
+        ("Logga in som StudentHandledare", DataBase.AllAccounts[4]),
+        ("Logga in som Admininstratör", DataBase.AllAccounts[5])
     };
 
     //login/accountcreate screen
