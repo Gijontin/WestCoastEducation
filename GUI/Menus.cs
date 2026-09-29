@@ -26,7 +26,6 @@ public class Menus {
     //login/accountcreate screen
     public void StartMenu() {
         int menuIndex = 0;
-
         do {
             try {
             //GUI
@@ -91,26 +90,4 @@ public class Menus {
 
     }
     
-/*
-    KundAccountMenu:
-        - Egna personuppgifter
-        - Kolla kursutbud:
-            - Välja Kurser att lägga-till/ta-bort kurser i kundens egna lista
-
-        - Spara ens lista på valda kurser på disk (.json)
-        - ladda in ens lista på valda kurser från disk (.json)
-    
-    LärarAcconutMenu:
-        - Egna personuppgifter
-        - kolla kurser man leder
-            - kolla vilka elever som är "subscribed" till kurs
-
-    Utbildningslärare:
-        - Egna personuppgifter
-        - Kolla Studenter och Lärares uppgifter (VIKTIGT: även Lärares anställningsperioder)
-            - lägga till/skapa kurser (och program)
-                - lägga till lärare till kurser (tror admin ansvarar för att faktiskt ge lärare konton och sådant...)
-                - KANSKE lägga till elever till större program och sådant också, men ett system bör annars nog fixa de flesta köpe-kurser etc
-
-*/
 }

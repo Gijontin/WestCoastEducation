@@ -16,9 +16,18 @@ public class Student : Account {
     //EGEN LISTA FÖR PÅGÅENDE PROGRAM/KURSER
     public void ViewMyCourses() {
         if (PurchasedCourses != null) {
-            foreach (var item in PurchasedCourses) {
-                Console.WriteLine(item.CourseID.TitleName);
+            Console.WriteLine();
+            Console.WriteLine("Mina kurser:\n");
+            foreach (Course item in PurchasedCourses) {
+                
+                Console.Write(" - ");
+                GenUtils.WriteColour(item.CourseID.TitleName, ConsoleColor.Yellow);
+
+                if (item.AssignedInstructor != null) {
+                    GenUtils.WriteColourLine($" | Lärare: {item.AssignedInstructor.Address.FirstName} {item.AssignedInstructor.Address.LastName}", ConsoleColor.Yellow);
+                } else {Console.WriteLine();}
             }
+            GenUtils.PressToContinue();
         }
     }
     //SIGNUP FUNKTIONER FÖR KURSER OCH SÅDANT

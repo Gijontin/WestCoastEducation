@@ -4,13 +4,25 @@ public static class TypeFetchers {
     public static T GetEnumType<T>() { //Viktigt: <T> agerar effektivt som parametern istället, call ex: "TypeFetchers.GetEnumType<DeliveryType>();" (enums är fan riktigt AIDS i C#...)
 
         int index = 0;
+        int mostChars = 0;
         T[] array = (T[])Enum.GetValues(typeof(T));
 
+        //sätter maximum loops required för min "We-got-backspace-at-home variant av backspace"
+        foreach (T val in array) {
+            try { //utifall val.ToString kraschar för att den deref:ar en null ref...
+                int length = val.ToString().Length;
+                if (length > mostChars) {
+                    mostChars = length;
+                }
+            } catch {}
+        }
+
         do {
-            Console.WriteLine(array[index]!.ToString()); //"!": trust me, bro
+            //"\r" i början här för hur jag gör "backspace" med mellanslag
+            Console.Write("\r" + array[index]!.ToString()); //"!": trust me, bro
 
         //KEY INPUT
-            ConsoleKeyInfo key = Console.ReadKey();
+            ConsoleKeyInfo key = Console.ReadKey(intercept: true); //undviker skriva in extra bokstav i terminalen (via case)
 
             switch (key.Key) {
             //LEFT
@@ -40,6 +52,13 @@ public static class TypeFetchers {
                 default:
                     break;
             }
+
+            //"\r" går till kolumn 0 sen skriver jag över allt med mellanslag (eftersom backspace inte riktigt funkar som jag vill här)
+            Console.Write("\r");
+            for (int i = 0; i < mostChars; i++) {
+                Console.Write(" ");
+            }
+
         } while (true);
 
     }

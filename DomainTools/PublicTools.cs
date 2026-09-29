@@ -16,14 +16,19 @@ public class PublicTools {
         int menuIndex = 0;
         int ci = 0;
         ConsoleKeyInfo key = new();
-        ConsoleColor[] colourshift = {ConsoleColor.Green, ConsoleColor.DarkGreen, ConsoleColor.Green, ConsoleColor.White};
+        //FPS trick, dubbla färgerna i arrayn så de känns långsammare så kan jag sänka thread.sleep timern ytterligare så att den känns mer responsiv men att färgändringarna fortfarande inte blir alltför hetsiga...
+        ConsoleColor[] colourshift = {ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.DarkGreen, ConsoleColor.DarkGreen, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.White}; //kör en palette-swapping teknik som proffsen gjorde för att billigt(computational) animera i äldre spel
         const string signup = "Press 'Enter' to Sign Up for the Course!\n";
 
         do {
             Console.Clear();
         //UI
             int fulingindex = 0;
-            Console.WriteLine(); //lite skiljerum för UI visiblity
+
+            if (account?.GetType() == typeof(Student)) {
+                GenUtils.WriteColourLine($"\n - Använd Piltangenterna eller 'W' och 'S' för att växla i listan, 'Esc' för att gå tillbaka - \n", ConsoleColor.Cyan);
+            } else {Console.WriteLine();}
+
             foreach (Course kurs in DataBase.AllCourses) {
                 
                 Console.WriteLine(kurs.ToString());
@@ -65,9 +70,14 @@ public class PublicTools {
                         break;
                         
                         case ConsoleKey.Enter: {
-                            DataBase.AllCourses[menuIndex].SignUp(student);
-                            GenUtils.WriteColourLine("\nDin ansökan är Godkänd, välommen till kursen!", ConsoleColor.Green);
-                            GenUtils.PressToContinue();
+                            if (!DataBase.AllCourses[menuIndex].StudentList.Contains(student)) {
+                                DataBase.AllCourses[menuIndex].SignUp(student);
+                                GenUtils.WriteColourLine("\nDin ansökan är Godkänd, välkommen till kursen!", ConsoleColor.Green);
+                                GenUtils.PressToContinue();   
+                            } else {
+                                GenUtils.WriteColourLine("\nDu har redan ansökt till kursen.", ConsoleColor.Red);
+                                GenUtils.PressToContinue();        
+                            }
                             return;
                         }
                         break; //behåll för säkerhets skull (utifall jag ändrar funktionaliteten)
@@ -85,7 +95,7 @@ public class PublicTools {
             } else if (ci >= colourshift.Length - 1) {
                 ci = 0;
             }
-            Thread.Sleep(125);
+            Thread.Sleep(100);
         } while (account?.GetType() == typeof(Student));
 
         GenUtils.PressToContinue();

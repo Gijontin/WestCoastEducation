@@ -6,6 +6,7 @@ namespace WestCoastEducation;
 */
 public class GetMenu { //BYGG OCH INITERA FUNKTIONER/MENYN GENOM KONSTRUKTORN SÅ ATT DET BARA BLIR ETT ONE-LINE-CALL I "Menus.cs"
     private const string arrow = "--> ";
+    private bool IsActive { get; set; } = true;
     public  List<MenuItem> MyMenu { get; private set;}
     public List<MenuItem> BuildMenu(Account account) {
         List<MenuItem> menu = new();
@@ -77,13 +78,15 @@ public class GetMenu { //BYGG OCH INITERA FUNKTIONER/MENYN GENOM KONSTRUKTORN S�
         }
 
     //TODO: feeet överkurs men ett "go back" option hade varit coolt
-        menu.Add(new MenuItem("Back (Placeholder, this will also 'Exit' for now...)", () => {Console.Clear(); Environment.Exit(0);})); //PLACEHOLDER FUNKTION!!!
+        //menu.Add(new MenuItem("Back (Placeholder, this will also 'Exit' for now...)", () => {Console.Clear(); Environment.Exit(0);})); //PLACEHOLDER FUNKTION!!!
+        menu.Add(new MenuItem("Go Back.", () => GoBack())); //PLACEHOLDER FUNKTION!!!
 
     //avslutar alltid med exit
         menu.Add(new MenuItem("Exit", () => {Console.Clear(); Environment.Exit(0);}));
 
         return menu;
     }
+    public void GoBack() => IsActive = false; //kunde gjort ett normalt block också men det är kul att kunna använda lambda...
     private void RunMenu() {
         int menuIndex = 0;
 
@@ -147,7 +150,7 @@ public class GetMenu { //BYGG OCH INITERA FUNKTIONER/MENYN GENOM KONSTRUKTORN S�
             catch {
                     
             }
-        } while (true);
+        } while (IsActive);
 
 
     }

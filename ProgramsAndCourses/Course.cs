@@ -1,6 +1,17 @@
 ﻿namespace WestCoastEducation;
 
 public class Course : LearningExperience {
+    public override void SignUp(Student student) {
+        base.SignUp(student);
+
+        if (!student.PurchasedCourses.Contains(this)) { //undvik dubletter (hashlist-nånting är nog bättre för det i framtiden, tillåter bara unika keys...)
+            student.PurchasedCourses.Add(this); //jank, kanske ändra sen
+        } else {
+            GenUtils.WriteColourLine("Du har redan tillgång till kursen,", ConsoleColor.Red);
+            return;
+        }
+        
+    }
     public override string ToString() {
     
     //kraschar om jag inte "tillåter" alla variablerna vara null med "?" vid check (guess how I found out... ( ͡° ͜ʖ ͡°)

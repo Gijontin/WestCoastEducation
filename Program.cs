@@ -75,6 +75,10 @@ class Program
             TimeOfCreationDate = DateTime.Now,
         };
         DataBase.AllAccounts.Add(newAdmin);
+
+        DataBase.AllCourses[0].AssignedInstructor = newInstructor;
+        DataBase.AllCourses[2].AssignedInstructor = newInstructor;
+
 //----------------------------------------------------------------------------------------------- (END)
 
 

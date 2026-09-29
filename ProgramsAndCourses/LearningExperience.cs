@@ -37,7 +37,7 @@ public abstract class LearningExperience { //bästa översättningsalternativet 
     public int TimePeriodInWeeks { get; set; } // TimeSpan skillnad = StartDate - EndDate; | TimePeriodInWeeks = skillnad.TotalDays / 7;
 
 //FUNKTIONER
-    public void SignUp(Student student) {
+    public virtual void SignUp(Student student) {
         StudentList.Add(student); //man vill nog ha denna processen i en helt separat lista med signup som gås igenom och behandlas separat, kanske bara en 'tag' för vilken kurs man ansöker
     }
     public void ShowDescription() {

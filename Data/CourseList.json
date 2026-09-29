@@ -6,14 +6,37 @@
       "DeliveryType": 1
     },
     "FieldOfStudy": 0,
-    "Subject": 0,
+    "Subject": 2,
     "Description": null,
     "IsStandalone": false,
-    "AssignedInstructor": null,
+    "AssignedInstructor": {
+      "SubjectAreas": [
+        3,
+        1
+      ],
+      "LearningItemAssignmentsList": [],
+      "EmploymentStartDate": "0001-01-01T00:00:00",
+      "AccountType": 1,
+      "AccountID": 0,
+      "Address": {
+        "FirstName": "Johan",
+        "LastName": "Berg",
+        "PreferredName": null,
+        "PhoneNumber": "073-9876543",
+        "Email": "johan@example.com",
+        "PersonNumber": "19850622-5678",
+        "StreetAddress": "Storgatan 5",
+        "Region": "V\u00E4stra G\u00F6talands l\u00E4n",
+        "PostalCode": "41124",
+        "City": "G\u00F6teborg"
+      },
+      "TimeOfCreationDate": "2026-09-30T00:07:07.2233806+02:00",
+      "PublicTools": {}
+    },
     "StudentList": [],
     "StartDate": "0001-01-01T00:00:00",
     "EndDate": "0001-01-01T00:00:00",
-    "TimePeriodInWeeks": 0
+    "TimePeriodInWeeks": 15
   },
   {
     "CourseID": {
@@ -22,14 +45,14 @@
       "DeliveryType": 2
     },
     "FieldOfStudy": 0,
-    "Subject": 0,
+    "Subject": 5,
     "Description": null,
     "IsStandalone": false,
     "AssignedInstructor": null,
     "StudentList": [],
     "StartDate": "0001-01-01T00:00:00",
     "EndDate": "0001-01-01T00:00:00",
-    "TimePeriodInWeeks": 0
+    "TimePeriodInWeeks": 666
   },
   {
     "CourseID": {
@@ -38,14 +61,37 @@
       "DeliveryType": 0
     },
     "FieldOfStudy": 0,
-    "Subject": 0,
+    "Subject": 6,
     "Description": null,
     "IsStandalone": false,
-    "AssignedInstructor": null,
+    "AssignedInstructor": {
+      "SubjectAreas": [
+        3,
+        1
+      ],
+      "LearningItemAssignmentsList": [],
+      "EmploymentStartDate": "0001-01-01T00:00:00",
+      "AccountType": 1,
+      "AccountID": 0,
+      "Address": {
+        "FirstName": "Johan",
+        "LastName": "Berg",
+        "PreferredName": null,
+        "PhoneNumber": "073-9876543",
+        "Email": "johan@example.com",
+        "PersonNumber": "19850622-5678",
+        "StreetAddress": "Storgatan 5",
+        "Region": "V\u00E4stra G\u00F6talands l\u00E4n",
+        "PostalCode": "41124",
+        "City": "G\u00F6teborg"
+      },
+      "TimeOfCreationDate": "2026-09-30T00:07:07.2233806+02:00",
+      "PublicTools": {}
+    },
     "StudentList": [],
     "StartDate": "0001-01-01T00:00:00",
     "EndDate": "0001-01-01T00:00:00",
-    "TimePeriodInWeeks": 0
+    "TimePeriodInWeeks": 9
   },
   {
     "CourseID": {
@@ -54,13 +100,29 @@
       "DeliveryType": 2
     },
     "FieldOfStudy": 0,
-    "Subject": 0,
+    "Subject": 3,
     "Description": null,
     "IsStandalone": false,
     "AssignedInstructor": null,
     "StudentList": [],
     "StartDate": "0001-01-01T00:00:00",
     "EndDate": "0001-01-01T00:00:00",
-    "TimePeriodInWeeks": 0
+    "TimePeriodInWeeks": 24
+  },
+  {
+    "CourseID": {
+      "ID": null,
+      "TitleName": "Kaffeg\u00F6k Med P\u00E5t\u00E4nd H\u00F6k, Grund",
+      "DeliveryType": 1
+    },
+    "FieldOfStudy": 0,
+    "Subject": 1,
+    "Description": null,
+    "IsStandalone": false,
+    "AssignedInstructor": null,
+    "StudentList": [],
+    "StartDate": "2026-09-30T00:07:50.2595804+02:00",
+    "EndDate": "2027-07-28T00:07:50.2595804+02:00",
+    "TimePeriodInWeeks": 43
   }
 ]
