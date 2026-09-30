@@ -42,10 +42,13 @@ public class Instructor : Account {
             return;
         }
 
+        Console.WriteLine("\nDina aktiva kurser/program:\n");
+
         foreach (LearningExperience kurs in LearningItemAssignmentsList) {
             //bara "Course" subklassen som har en override .ToString() än sålänge...
-            Console.WriteLine(kurs.ToString());
+            Console.WriteLine(kurs.ToString()); //Course's ToString sköter färdkodningen internt...
         }
+        GenUtils.PressToContinue();
     }
     public void ShowAttendingStudents() {
         //ska egentligen vara en funktion man kommer åt med lärare privilegier (eller högre)

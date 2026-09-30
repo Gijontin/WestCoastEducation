@@ -17,6 +17,7 @@ public class PublicTools {
         int ci = 0;
         ConsoleKeyInfo key = new();
         //FPS trick, dubbla färgerna i arrayn så de känns långsammare så kan jag sänka thread.sleep timern ytterligare så att den känns mer responsiv men att färgändringarna fortfarande inte blir alltför hetsiga...
+        //kan nog göra en bättre conditional senare med en float-counter som bara byter index vid en viss "procent"...
         ConsoleColor[] colourshift = {ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.DarkGreen, ConsoleColor.DarkGreen, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.White}; //kör en palette-swapping teknik som proffsen gjorde för att billigt(computational) animera i äldre spel
         const string signup = "Press 'Enter' to Sign Up for the Course!\n";
 
@@ -26,7 +27,8 @@ public class PublicTools {
             int fulingindex = 0;
 
             if (account?.GetType() == typeof(Student)) {
-                GenUtils.WriteColourLine($"\n - Använd Piltangenterna eller 'W' och 'S' för att växla i listan, 'Esc' för att gå tillbaka - \n", ConsoleColor.Cyan);
+                //GenUtils.WriteColourLine($"\n - Använd Piltangenterna eller 'W' och 'S' för att växla i listan, 'Esc' för att gå tillbaka - \n", ConsoleColor.Cyan);
+                GenUtils.MenuNavigationInfo();
             } else {Console.WriteLine();}
 
             foreach (Course kurs in DataBase.AllCourses) {

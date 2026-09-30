@@ -43,7 +43,13 @@ public static class GenUtils {
         Console.WriteLine(str);
         Console.ResetColor();
     }
-
+    public static void HeaderPrint() {
+        Console.Clear();
+        Console.WriteLine("Welcome to WestCoast Education - The WestCoast's Leading IT-Education Platform");
+    }
+    public static void MenuNavigationInfo() {
+        WriteColourLine($"\n - Använd Piltangenterna eller 'W' och 'S' för att växla i listan, 'Esc' för att gå tillbaka - \n", ConsoleColor.Cyan);
+    }
     /*
         TODO:
             FÖRSÖK HITTA PÅ FLERTAL OVERLOAD METODER FÖR MENYER SÅ JAG SLIPPER GÖRA SWITCH CASE SKITEN FÖR VARJE LITEN SELECT-STUFF FUNKTION

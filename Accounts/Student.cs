@@ -15,7 +15,12 @@ public class Student : Account {
 
     //EGEN LISTA FÖR PÅGÅENDE PROGRAM/KURSER
     public void ViewMyCourses() {
-        if (PurchasedCourses != null) {
+        if (PurchasedCourses == null || PurchasedCourses.Count < 1) {
+            GenUtils.WriteColourLine("\nDu äger eller deltar i 0(noll) kurser just nu.", ConsoleColor.Cyan);
+            GenUtils.PressToContinue();
+            return;
+        }
+        //if (PurchasedCourses != null) {
             Console.WriteLine();
             Console.WriteLine("Mina kurser:\n");
             foreach (Course item in PurchasedCourses) {
@@ -28,7 +33,7 @@ public class Student : Account {
                 } else {Console.WriteLine();}
             }
             GenUtils.PressToContinue();
-        }
+        //}
     }
     //SIGNUP FUNKTIONER FÖR KURSER OCH SÅDANT
     public void FindNewCourses() { //REFACTOR NAMN, SKA EGENTLIGEN VARA NÅGON FORM AV "LÄGG TILL/ANSÖK KURS" SKA MEST TROLIGT EGENTLIGEN INTE ENS VARA PÅ STUDENTKONTOT....

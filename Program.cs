@@ -77,7 +77,9 @@ class Program
         DataBase.AllAccounts.Add(newAdmin);
 
         DataBase.AllCourses[0].AssignedInstructor = newInstructor;
+            newInstructor.LearningItemAssignmentsList.Add(DataBase.AllCourses[0]);
         DataBase.AllCourses[2].AssignedInstructor = newInstructor;
+            newInstructor.LearningItemAssignmentsList.Add(DataBase.AllCourses[2]);
 
 //----------------------------------------------------------------------------------------------- (END)
 

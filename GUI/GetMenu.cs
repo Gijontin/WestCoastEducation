@@ -94,6 +94,8 @@ public class GetMenu { //BYGG OCH INITERA FUNKTIONER/MENYN GENOM KONSTRUKTORN SÃ
             try {
             //GUI
                 Console.Clear(); //ERSÃ„TT MED EN HEADER (som har inbyggd clear...)
+                GenUtils.HeaderPrint();
+                GenUtils.MenuNavigationInfo();
                 for (int i = 0; i < MyMenu.Count; i++) {
                     if (menuIndex == i) {
                         GenUtils.WriteColour(arrow, ConsoleColor.Green);
@@ -141,6 +143,9 @@ public class GetMenu { //BYGG OCH INITERA FUNKTIONER/MENYN GENOM KONSTRUKTORN SÃ
                         }
                     }
                     break;
+
+                    case ConsoleKey.Escape: {return;}
+                    break; //keep kvar or suffer
                     
                 //MISC.
                     default:

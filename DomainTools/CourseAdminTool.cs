@@ -42,9 +42,9 @@ public class CourseAdminTool(IAdminRights AdminID) : Tools {
         private CourseID CreateCourseID() {
             CourseID temp = new();
 
-                Console.WriteLine("\nSkriv in kursnamnet, tryck sedan 'Enter'.");
+                GenUtils.WriteColourLine("\nSkriv in kursnamnet, tryck sedan 'Enter'.", ConsoleColor.Yellow);
                 temp.TitleName = Console.ReadLine() ?? ""; //janky sätt, blir tomt om man failar på ReadLine (vet inte hur man skulle lyckas men men...)
-                Console.WriteLine("\nVälj Undervisningsform Genom Att Växla med Höger- och Vänsterpil eller 'A' och 'D', tryck sedan 'Enter'.");
+                GenUtils.WriteColourLine("\nVälj Undervisningsform Genom Att Växla med Höger- och Vänsterpil eller 'A' och 'D', tryck sedan 'Enter'.", ConsoleColor.Yellow);
                 temp.DeliveryType = TypeFetchers.GetEnumType<LearningFormat>();
             return temp;
         }
@@ -55,7 +55,7 @@ public class CourseAdminTool(IAdminRights AdminID) : Tools {
 
                 //gör detta bättre med möjlighet att avbryta
                 while (true) {
-                    Console.WriteLine("\nAnge kurslängd i veckor, tryck sedan 'Enter':");
+                    GenUtils.WriteColourLine("\n\nAnge kurslängd i veckor, tryck sedan 'Enter':", ConsoleColor.Yellow);
                     if (int.TryParse(Console.ReadLine(), out int weeks)) {
                         temp.TimePeriodInWeeks = weeks;
                         break;

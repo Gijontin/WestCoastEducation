@@ -2,10 +2,10 @@
 
 public class Menus {
     private const string arrow = "--> ";
-    private void HeaderPrint() {
+/*     private void HeaderPrint() {
         Console.Clear();
-        Console.WriteLine("Welcome to WestCoast Education - The WestCoast's Leading IT-Education Platform\n\n");
-    }
+        Console.WriteLine("Welcome to WestCoast Education - The WestCoast's Leading IT-Education Platform");
+    } */
 
     /*
         TODO:
@@ -29,8 +29,8 @@ public class Menus {
         do {
             try {
             //GUI
-                HeaderPrint();
-
+                GenUtils.HeaderPrint();
+                GenUtils.MenuNavigationInfo();
                 for (int i = 0; i < 4; i++) {
                     if (menuIndex == i) {
                         GenUtils.WriteColour(arrow, ConsoleColor.Green);
@@ -77,6 +77,14 @@ public class Menus {
                     }
                     break;
 
+                    case ConsoleKey.Escape: {
+                        GenUtils.WriteColour("\nC", ConsoleColor.Yellow);
+                        GenUtils.WriteColourLine("Closing down the program.", ConsoleColor.Yellow);
+                        Thread.Sleep(1200);
+                        Environment.Exit(0);
+                        return;     
+                    }
+                    break; //safety ifall jag pillar med att ta bort "return" eller så
                 //MISC.
                     default:
                         break;
